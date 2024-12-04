@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <Title>Nuxt - About</Title>
+  </Head>
   <LazyCustomTitle>
     You are on the About Page, and it's dynamic, try to put your name on url
     like "/about/foo"
