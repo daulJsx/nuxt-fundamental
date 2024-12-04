@@ -1,9 +1,13 @@
 <template>
   <div>
-    <h1>Vue Page</h1>
+    <h1>You are on the home page</h1>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+setTimeout(() => {
+  navigateTo("/about");
+}, 5000);
+</script>
 
 <style lang="scss" scoped></style>
