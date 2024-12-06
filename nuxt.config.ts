@@ -5,4 +5,5 @@ export default defineNuxtConfig({
   css: [
     "@/assets/styles/main.scss", // Lokasi file SCSS global
   ],
+  ssr: false,
 });
