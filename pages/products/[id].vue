@@ -6,10 +6,10 @@
         <h2 class="product-title">{{ product.title }}</h2>
       </header>
       <img :src="product.image" :alt="product.title" />
-      <p>Price: ${{ product.price }}</p>
+      <p>Price: ${{ formattedPrice }}</p>
       <p>Description: {{ product.description }}</p>
       <p>Category: {{ product.category }}</p>
-      <p>Rating: {{ product.rating.rate }}</p>
+      <p>Rating: {{ formattedRating }}</p>
       <p>Count: {{ product.rating.count }}</p>
     </div>
     <div v-else class="loading">
@@ -19,15 +19,34 @@
 </template>
 
 <script setup>
-import { watchEffect } from "vue";
+import { computed, watchEffect } from "vue";
+import { useRoute } from "nuxt/app";
+
 const { id } = useRoute().params;
 
 // Fetch product data
 const uri = `https://fakestoreapi.com/products/${id}`;
 const { data: product } = await useFetch(uri);
 
-watchEffect(async () => {
+// Watch the ID to detect route changes
+watchEffect(() => {
   console.log("Current ID:", id);
+});
+
+// Computed property for formatted price
+const formattedPrice = computed(() => {
+  if (product.value) {
+    return product.value.price.toFixed(2); // Format the price to two decimal places
+  }
+  return "Loading..."; // Return placeholder while loading
+});
+
+// Computed property for formatted rating
+const formattedRating = computed(() => {
+  if (product.value && product.value.rating) {
+    return `${product.value.rating.rate} / 5`; // Display rating in a friendly format
+  }
+  return "Loading..."; // Return placeholder while loading
 });
 </script>
 
