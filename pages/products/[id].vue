@@ -19,11 +19,16 @@
 </template>
 
 <script setup>
+import { watchEffect } from "vue";
 const { id } = useRoute().params;
 
 // Fetch product data
 const uri = `https://fakestoreapi.com/products/${id}`;
 const { data: product } = await useFetch(uri);
+
+watchEffect(async () => {
+  console.log("Current ID:", id);
+});
 </script>
 
 <style lang="scss" scoped>

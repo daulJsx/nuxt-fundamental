@@ -32,11 +32,12 @@ const { data: products } = await useFetch("https://fakestoreapi.com/products");
 .product-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   background-color: #fff;
   padding: 1rem;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: calc(25% - 50px); /* Responsif, 4 kartu dalam satu baris */
+  width: 256px;
   min-height: 250px;
   overflow: hidden;
   transition: transform 0.2s;
@@ -51,6 +52,7 @@ const { data: products } = await useFetch("https://fakestoreapi.com/products");
 
 .product-detail {
   align-self: end;
+  bottom: 0;
 }
 
 .product-card h2 {
