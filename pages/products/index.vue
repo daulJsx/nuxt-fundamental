@@ -17,7 +17,18 @@
 </template>
 
 <script setup>
-const { data: products } = await useFetch("https://fakestoreapi.com/products");
+import { useProductsStore } from "~/stores/products";
+
+// Ambil store produk
+const productsStore = useProductsStore();
+
+// Ambil produk dari store
+const products = productsStore.getAllProducts;
+
+// Ambil produk saat komponen di-mount
+onMounted(() => {
+  productsStore.fetchProducts();
+});
 </script>
 
 <style lang="scss" scoped>

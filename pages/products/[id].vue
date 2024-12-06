@@ -21,13 +21,22 @@
 <script setup>
 import { computed, watchEffect } from "vue";
 import { useRoute } from "nuxt/app";
+import { useProductsStore } from "~/stores/products";
 
 const { id } = useRoute().params;
 
 // Fetch product data
-const uri = `https://fakestoreapi.com/products/${id}`;
-const { data: product } = await useFetch(uri);
+const productsStore = useProductsStore();
 
+// Ambil produk berdasarkan ID
+const product = computed(() => {
+  return productsStore.products.find((product) => product.id === parseInt(id));
+});
+
+// Jika produk belum ada di store, fetch data produk
+if (!product.value) {
+  productsStore.fetchProducts();
+}
 // Watch the ID to detect route changes
 watchEffect(() => {
   console.log("Current ID:", id);
