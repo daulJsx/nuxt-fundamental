@@ -22,6 +22,9 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 header a {
   color: #333;

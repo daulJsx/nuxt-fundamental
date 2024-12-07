@@ -8,5 +8,5 @@ export default defineNuxtConfig({
   ],
 
   ssr: false,
-  modules: ["@nuxt/icon"],
+  modules: ["@nuxt/icon", "@nuxt/image"],
 });
