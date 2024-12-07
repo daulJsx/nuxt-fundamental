@@ -7,7 +7,6 @@
     </div>
     <div class="navbar-links">
       <nuxt-link to="/">Home</nuxt-link>
-      <nuxt-link to="/about">About</nuxt-link>
       <nuxt-link to="/products">Products</nuxt-link>
     </div>
   </header>
