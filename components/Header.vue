@@ -5,24 +5,26 @@
     <div class="navbar-brand">
       <a href="/">Nuxt App</a>
     </div>
-    <div class="navbar-links">
-      <nuxt-link to="/">Home</nuxt-link>
-      <nuxt-link to="/products">Products</nuxt-link>
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." />
+      <button type="button">
+        <Icon name="uil:search" style="color: #f0a500" />
+      </button>
     </div>
   </header>
 </template>
 
 <style scoped>
 header {
-  background-color: #333;
-  color: #fff;
+  background-color: #fff;
+  color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 20px;
+  padding: 1rem 20px;
 }
 header a {
-  color: #fff;
+  color: #333;
   text-decoration: none;
   margin: 0 15px;
   font-size: 18px;
@@ -34,25 +36,35 @@ header a:hover {
   font-size: 24px;
   font-weight: 700;
 }
-.navbar-links {
+.search-bar {
   display: flex;
   align-items: center;
-}
-.navbar-links a {
   position: relative;
 }
-.navbar-links a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #f0a500;
-  left: 50%;
-  bottom: -5px;
-  transition: width 0.3s, left 0.3s;
+.search-bar input {
+  padding: 20px 10px;
+  border: none;
+  border-radius: 3px;
+  padding-right: 30px;
+  color: #333;
+  transition: linear 500ms;
 }
-.navbar-links a:hover::after {
+.search-bar button {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+  color: #333;
+}
+
+.search-bar input:focus {
+  outline: none;
+}
+
+.search-bar input::after {
+  content: "";
   width: 100%;
-  left: 0;
+  color: #f0a500;
 }
 </style>
